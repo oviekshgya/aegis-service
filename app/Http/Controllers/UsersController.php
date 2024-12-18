@@ -10,9 +10,58 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Log;
 
+/**
+    * @OA\Info(
+    *      version="1.0.0",
+    *      title="Dokumentasi API Aegis Service",
+    *      description="Oviek Shagya",
+    *      @OA\Contact(
+    *          email="oviekshagya51@gmail.com"
+    *      )
+    * )
+    *
+    * @OA\Server(
+    *      url=L5_SWAGGER_CONST_HOST,
+    *      description="Demo API Aegis Service"
+    * )
+    */
 class UsersController extends Controller
 {
-
+ /**
+     * @OA\Post(
+     *     path="/api/users",
+     *     summary="Create a new user",
+     *     tags={"Users"},
+     *     @OA\RequestBody(
+     *         required=true,
+     *         @OA\JsonContent(
+     *             required={"email", "password", "name"},
+     *             @OA\Property(property="email", type="string", example="aadadaa@gmail.com"),
+     *             @OA\Property(property="password", type="string", example="password123"),
+     *             @OA\Property(property="name", type="string", example="New User")
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=201,
+     *         description="User created successfully",
+     *         @OA\JsonContent(
+     *             type="object",
+     *             @OA\Property(property="id", type="integer", example=17),
+     *             @OA\Property(property="email", type="string", example="aadadaa@gmail.com"),
+     *             @OA\Property(property="name", type="string", example="New User"),
+     *             @OA\Property(property="created_at", type="string", format="date-time", example="2024-12-18T19:15:35+00:00")
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=400,
+     *         description="Invalid input",
+     *         @OA\JsonContent(
+     *             type="object",
+     *             @OA\Property(property="error", type="string", example="Bad Request")
+     *         )
+     *     )
+     * )
+     */
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -60,6 +109,35 @@ class UsersController extends Controller
         }
     }
 
+    /**
+     * @OA\Get(
+     *     path="/api/users",
+     *     summary="Get list of users",
+     *     tags={"Users"},
+     *     @OA\Response(
+     *         response=200,
+     *         description="List of users",
+     *         @OA\JsonContent(
+     *             type="object",
+     *             @OA\Property(property="page", type="integer", example=1),
+     *             @OA\Property(
+     *                 property="users",
+     *                 type="array",
+     *                 @OA\Items(
+     *                     type="object",
+     *                     @OA\Property(property="id", type="integer", example=16),
+     *                     @OA\Property(property="email", type="string", example="sasarnnda2106@gmail.com"),
+     *                     @OA\Property(property="name", type="string", example="New User"),
+     *                     @OA\Property(property="active", type="integer", example=1),
+     *                     @OA\Property(property="created_at", type="string", format="date-time", example="2024-12-18T18:30:42.000000Z"),
+     *                     @OA\Property(property="updated_at", type="string", format="date-time", example="2024-12-18T18:30:42.000000Z"),
+     *                     @OA\Property(property="orders_count", type="integer", example=0)
+     *                 )
+     *             )
+     *         )
+     *     )
+     * )
+     */
     public function index(Request $request)
     {
         $perPage = $request->get('per_page', 10);
