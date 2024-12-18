@@ -17,25 +17,21 @@ class BasicAuthMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        $username = 'gamecloud';  // Ganti dengan username custom
-        $password = 'shagya51';  // Ganti dengan password custom
+        $username = 'gamecloud';
+        $password = 'shagya51';
 
-        // Cek apakah header Authorization ada dan valid
         if (!$request->hasHeader('Authorization')) {
             return response('Unauthorized', Response::HTTP_UNAUTHORIZED);
         }
 
-        // Ambil nilai Authorization header
         $authHeader = $request->header('Authorization');
         if (substr($authHeader, 0, 6) !== 'Basic ') {
             return response('Unauthorized', Response::HTTP_UNAUTHORIZED);
         }
 
-        // Decode username dan password
         $credentials = base64_decode(substr($authHeader, 6));
         list($inputUsername, $inputPassword) = explode(':', $credentials);
 
-        // Cek username dan password
         if ($inputUsername !== $username || $inputPassword !== $password) {
             return response()->json([
                 'message' => 'Unauthorized',
