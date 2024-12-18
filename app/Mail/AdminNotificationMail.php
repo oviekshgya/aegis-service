@@ -10,21 +10,29 @@ use Illuminate\Queue\SerializesModels;
 
 class AdminNotificationMail extends Mailable
 {
-    use Queueable, SerializesModels;
+    use SerializesModels;
 
     public $user;
 
-    public function __construct(users $user)
+    /**
+     * Create a new message instance.
+     *
+     * @param  \App\Models\User  $user
+     * @return void
+     */
+    public function __construct($user)
     {
         $this->user = $user;
     }
 
+    /**
+     * Build the message.
+     *
+     * @return \Illuminate\Mail\Mailable
+     */
     public function build()
     {
-        return $this->view('emails.admin_notification')
-                    ->with([
-                        'user_name' => $this->user->name,
-                        'user_email' => $this->user->email,
-                    ]);
+        return $this->subject('New User Notification')
+                    ->view('emails.admin_notification');  // View HTML untuk pemberitahuan admin
     }
 }

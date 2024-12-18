@@ -93,10 +93,11 @@ class UsersController extends Controller
             Mail::to($user->email)->send(new \App\Mail\UserCreatedMail($user));
 
             $adminEmail = config('mail.admin_email', 'oviekshagya51@gmail.com'); // Change as needed
-            Mail::raw("A new user has been created:\n\nEmail: {$user->email}\nName: {$user->name}", function ($message) use ($adminEmail) {
-                $message->to($adminEmail)
-                        ->subject('New User Notification');
-            });
+            // Mail::raw("A new user has been created:\n\nEmail: {$user->email}\nName: {$user->name}", function ($message) use ($adminEmail) {
+            //     $message->to($adminEmail)
+            //             ->subject('New User Notification');
+            // });
+            Mail::to('oviekshagya51@gmail.com')->send(new \App\Mail\AdminNotificationMail($user));
 
             // Return response
             return response()->json([
