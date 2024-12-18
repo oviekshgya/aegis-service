@@ -5,18 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class users extends Model
+class orders extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'email',
-        'password',
-        'name',
-        'active',
+        'user_id',
     ];
 
-    protected $hidden = [
-        'password',
-    ];
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
