@@ -36,13 +36,11 @@ class UsersController extends Controller
                 'updated_at' => now(),
             ]);
 
-            // Send email to the user
             Mail::raw('Your account has been successfully created.', function ($message) use ($user) {
                 $message->to($user->email)
                         ->subject('Account Creation Confirmation');
             });
 
-            // Notify system administrator
             $adminEmail = config('mail.admin_email', 'oviekshagya51@gmail.com'); // Change as needed
             Mail::raw("A new user has been created:\n\nEmail: {$user->email}\nName: {$user->name}", function ($message) use ($adminEmail) {
                 $message->to($adminEmail)
@@ -60,6 +58,35 @@ class UsersController extends Controller
             Log::error('Error creating user: ' . $e->getMessage());
             return response()->json(['message' => 'An error occurred while creating the user.' . $e->getMessage()], 400);
         }
+    }
 
+    public function index(Request $request)
+    {
+        $perPage = $request->get('per_page', 10);
+        $search = $request->get('search');
+        $sortBy = $request->get('sort_by', 'created_at');
+
+        $users = users::where('active', true);
+
+        if ($search) {
+            $users = $users->where(function($query) use ($search) {
+                $query->where('name', 'like', '%' . $search . '%')
+                      ->orWhere('email', 'like', '%' . $search . '%');
+            });
+        }
+
+        $users = $users->orderBy($sortBy, 'desc')
+                       ->paginate($perPage);
+
+        $users->getCollection()->transform(function($user) {
+            $user->orders_count = $user->orders()->count();
+            return $user;
+        });
+
+        // Return response
+        return response()->json([
+            'page' => $users->currentPage(),
+            'users' => $users->items(),
+        ]);
     }
 }

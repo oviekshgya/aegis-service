@@ -19,4 +19,10 @@ class users extends Model
     protected $hidden = [
         'password',
     ];
+
+    // Relasi one-to-many dengan orders
+    public function orders()
+    {
+        return $this->hasMany(orders::class, 'user_id');
+    }
 }

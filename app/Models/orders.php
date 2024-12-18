@@ -15,6 +15,6 @@ class orders extends Model
 
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'id'); // pastikan nama kolom yang benar
     }
 }
