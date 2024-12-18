@@ -49,3 +49,6 @@ A. Postman
 3. Once the file has been selected, click on the "Import" button to initiate the import process.
 4. After the import process is complete, you should see your newly imported collection listed in the Collections tab.
 ```
+
+B. Swagger
+ - http://localhost:8000/api/documentation#/
