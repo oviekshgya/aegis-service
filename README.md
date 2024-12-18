@@ -44,6 +44,8 @@ A. Postman
 - (Postman Link) [https://documenter.getpostman.com/view/10214608/2sAYJ1m3Ag]
 - Import Collections
 ```bash
-curl --location 'http://localhost:8000/api/authbasic/users' \
---header 'X-API-KEY: aegis-service-user001'
+1. Open Postman and navigate to the Collections tab on the left-hand side. Click on the "Import" button located in the top-left corner of the screen.
+2.  In the "Import File" modal, click on the "Choose Files" button and select the Postman collection file you need to import. Or you can, choose Aegis Service.postman.colllection.json
+3. Once the file has been selected, click on the "Import" button to initiate the import process.
+4. After the import process is complete, you should see your newly imported collection listed in the Collections tab.
 ```
