@@ -1,0 +1,345 @@
+{
+	"info": {
+		"_postman_id": "49e255ba-28b7-4668-a7b9-9220d9314d85",
+		"name": "Aegis Service",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "10214608"
+	},
+	"item": [
+		{
+			"name": "Create Users",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"sasarnnda2106@gmail.com\",\r\n    \"password\": \"password123\",\r\n    \"name\": \"New User\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Response Sukses",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"aadadaa@gmail.com\",\r\n    \"password\": \"password123\",\r\n    \"name\": \"New User\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"users"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Host",
+							"value": "localhost:8000"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 18 Dec 2024 19:15:44 GMT"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 18 Dec 2024 19:15:44 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/7.4.1"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "X-RateLimit-Limit",
+							"value": "60"
+						},
+						{
+							"key": "X-RateLimit-Remaining",
+							"value": "58"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 17,\n    \"email\": \"aadadaa@gmail.com\",\n    \"name\": \"New User\",\n    \"created_at\": \"2024-12-18T19:15:35+00:00\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Create Users [Bonus]",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "shagya51",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "gamecloud",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-API-KEY",
+						"value": "aegis-service-user001",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"sasarnnda2106@gmail.com\",\r\n    \"password\": \"password123\",\r\n    \"name\": \"New User\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Users",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/api/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"users"
+					],
+					"query": [
+						{
+							"key": "search",
+							"value": "John",
+							"disabled": true
+						},
+						{
+							"key": "sort_by",
+							"value": "created_at",
+							"disabled": true
+						},
+						{
+							"key": "per_page",
+							"value": "5",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Response Sukses",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"users"
+							],
+							"query": [
+								{
+									"key": "search",
+									"value": "John",
+									"disabled": true
+								},
+								{
+									"key": "sort_by",
+									"value": "created_at",
+									"disabled": true
+								},
+								{
+									"key": "per_page",
+									"value": "5",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Host",
+							"value": "localhost:8000"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 18 Dec 2024 19:15:09 GMT"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 18 Dec 2024 19:15:09 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/7.4.1"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "X-RateLimit-Limit",
+							"value": "60"
+						},
+						{
+							"key": "X-RateLimit-Remaining",
+							"value": "59"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"page\": 1,\n    \"users\": [\n        {\n            \"id\": 16,\n            \"email\": \"sasarnnda2106@gmail.com\",\n            \"name\": \"New User\",\n            \"active\": 1,\n            \"created_at\": \"2024-12-18T18:30:42.000000Z\",\n            \"updated_at\": \"2024-12-18T18:30:42.000000Z\",\n            \"orders_count\": 0\n        },\n        {\n            \"id\": 15,\n            \"email\": \"oviekshgy@gmail.com\",\n            \"name\": \"New User\",\n            \"active\": 1,\n            \"created_at\": \"2024-12-18T18:19:55.000000Z\",\n            \"updated_at\": \"2024-12-18T18:19:55.000000Z\",\n            \"orders_count\": 0\n        },\n        {\n            \"id\": 1,\n            \"email\": \"oviekshagya51@gmail.com\",\n            \"name\": \"Admin User\",\n            \"active\": 1,\n            \"created_at\": \"2024-12-18T16:47:52.000000Z\",\n            \"updated_at\": \"2024-12-18T16:47:52.000000Z\",\n            \"orders_count\": 1\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "Get Users [Bonus]",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "shagya51",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "gamecloud",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-API-KEY",
+						"value": "aegis-service-user001",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8000/api/authbasic/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"authbasic",
+						"users"
+					],
+					"query": [
+						{
+							"key": "search",
+							"value": "John",
+							"disabled": true
+						},
+						{
+							"key": "sort_by",
+							"value": "created_at",
+							"disabled": true
+						},
+						{
+							"key": "per_page",
+							"value": "5",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
