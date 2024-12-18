@@ -9,20 +9,29 @@ use Illuminate\Queue\SerializesModels;
 
 class UserCreatedMail extends Mailable
 {
-    use Queueable, SerializesModels;
+    use SerializesModels;
 
     public $user;
 
-    public function __construct(users $user)
+    /**
+     * Create a new message instance.
+     *
+     * @param  \App\Models\User  $user
+     * @return void
+     */
+    public function __construct($user)
     {
         $this->user = $user;
     }
 
+    /**
+     * Build the message.
+     *
+     * @return \Illuminate\Mail\Mailable
+     */
     public function build()
     {
-        return $this->view('emails.users_created')
-                    ->with([
-                        'user_name' => $this->user->name,
-                    ]);
+        return $this->subject('Account Creation Confirmation')
+                    ->view('emails.users_created');  // View HTML yang telah dibuat
     }
 }

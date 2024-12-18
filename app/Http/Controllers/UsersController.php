@@ -85,10 +85,12 @@ class UsersController extends Controller
                 'updated_at' => now(),
             ]);
 
-            Mail::raw('Your account has been successfully created.', function ($message) use ($user) {
-                $message->to($user->email)
-                        ->subject('Account Creation Confirmation');
-            });
+            // Mail::raw('Your account has been successfully created.', function ($message) use ($user) {
+            //     $message->to($user->email)
+            //             ->subject('Account Creation Confirmation');
+            // });
+
+            Mail::to($user->email)->send(new \App\Mail\UserCreatedMail($user));
 
             $adminEmail = config('mail.admin_email', 'oviekshagya51@gmail.com'); // Change as needed
             Mail::raw("A new user has been created:\n\nEmail: {$user->email}\nName: {$user->name}", function ($message) use ($adminEmail) {
