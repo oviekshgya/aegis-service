@@ -21,7 +21,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::post('/users', [UsersController::class, 'store']);
 Route::get('/users', [UsersController::class, 'index']);
 
-Route::prefix('authbasic')->middleware('basic.auth')->group(function () {
+Route::prefix('authbasic')->middleware(['basic.auth', 'api.key'])->group(function () {
     Route::get('/users', [UsersController::class, 'index']);
     Route::post('/users', [UsersController::class, 'store']);
 });
